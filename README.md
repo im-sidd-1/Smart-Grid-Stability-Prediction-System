@@ -1,4 +1,4 @@
-# ⚡ SmartGrid Guardian
+# ⚡ SmartGrid Stability Prediction
 
 AI-powered smart grid stability prediction and early warning system using XGBoost and Streamlit.
 
