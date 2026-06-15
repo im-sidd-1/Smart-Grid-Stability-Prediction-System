@@ -17,3 +17,8 @@ AI-powered smart grid stability prediction and early warning system using XGBoos
 - Pandas
 - NumPy
 - Plotly
+
+## 🚀 Live Demo
+
+Try the application here:
+https://smart-grid-stability-prediction-2womk8elrwzhe8caawdang.streamlit.app/
