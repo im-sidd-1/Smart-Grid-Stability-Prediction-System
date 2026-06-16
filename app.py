@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 st.markdown(
-    """
+    """ 
     <style>
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #0f2338 0%, #102a42 100%);
