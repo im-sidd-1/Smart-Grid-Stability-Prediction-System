@@ -63,8 +63,8 @@ Why Ensemble Methods Performed Well:
    • Averaging multiple predictions reduces variance
 
 3. HANDLING COMPLEX PATTERNS:
-   Grid stability depends on complex interactions between power flow (p1-p4),
-   response dynamics (tau1-tau4), and demand flexibility (g1-g4).
+   Grid stability depends on complex interactions between power balance (p1-p4),
+   response delay (tau1-tau4), and demand flexibility (g1-g4).
    Ensemble methods excel at capturing these non-linear relationships.
 
 4. ROBUSTNESS:
@@ -113,6 +113,11 @@ RECOMMENDATIONS
    Focus on top features for grid monitoring and parameter optimization.
    See feature_importance/ directory for detailed analysis.
 
+FEATURE GUIDE:
+• Response Delay: how quickly a node reacts to disturbances. Higher values indicate slower reactions.
+• Demand Flexibility: how adaptable a node's demand is. Higher values indicate a more flexible response.
+• Power Balance: net generation or consumption at a node. Positive values typically indicate generation dominance.
+
 4. EXPLAINABILITY:
    Use SHAP values (generated for XGBoost) to explain individual predictions
    to stakeholders and grid operators.
@@ -122,5 +127,5 @@ RECOMMENDATIONS
    in production environments.
 
 ================================================================================
-Generated: 2026-06-16 12:26:34
+Generated: 2026-06-16 13:56:00
 ================================================================================

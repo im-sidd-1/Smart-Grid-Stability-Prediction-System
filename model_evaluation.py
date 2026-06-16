@@ -59,6 +59,21 @@ OUTPUT_DIRS = {
     'shap': 'results/shap',
 }
 
+FEATURE_LABELS = {
+    'tau1': 'Response Delay – Node 1',
+    'tau2': 'Response Delay – Node 2',
+    'tau3': 'Response Delay – Node 3',
+    'tau4': 'Response Delay – Node 4',
+    'p1': 'Power Balance – Node 1',
+    'p2': 'Power Balance – Node 2',
+    'p3': 'Power Balance – Node 3',
+    'p4': 'Power Balance – Node 4',
+    'g1': 'Demand Flexibility – Node 1',
+    'g2': 'Demand Flexibility – Node 2',
+    'g3': 'Demand Flexibility – Node 3',
+    'g4': 'Demand Flexibility – Node 4',
+}
+
 # ==========================================
 # DIRECTORY SETUP
 # ==========================================
@@ -67,7 +82,7 @@ def create_directories():
     """Create all required output directories."""
     for dir_path in OUTPUT_DIRS.values():
         Path(dir_path).mkdir(parents=True, exist_ok=True)
-    print("[✓] Output directories created successfully.\n")
+    print("[OK] Output directories created successfully.\n")
 
 
 # ==========================================
@@ -343,6 +358,14 @@ def generate_classification_reports(models, predictions, X_test_scaled, X_test, 
         
         cm = confusion_matrix(y_test, y_pred)
         report_content.append(f"\nConfusion Matrix:\n{cm}\n")
+
+    report_content.append("\n" + "="*80)
+    report_content.append("FEATURE GUIDE")
+    report_content.append("="*80)
+    report_content.append("\nResponse Delay: how quickly a node reacts to disturbances. Higher values mean slower reaction.")
+    report_content.append("\nDemand Flexibility: how adaptable a node's demand is. Higher values mean more flexibility.")
+    report_content.append("\nPower Balance: net generation or consumption at a node. Positive values typically mean generation dominance.")
+    report_content.append("\n\nThis guide is included to help recruiters, reviewers, and non-technical readers understand the dashboard terms.")
     
     # Save to file
     with open(f"{OUTPUT_DIRS['reports']}/classification_reports.txt", 'w', encoding='utf-8') as f:
@@ -421,6 +444,9 @@ def generate_feature_importance(models, X_test, y_test, feature_names):
             'Importance': importances
         }).sort_values('Importance', ascending=True)
         
+        # Replace feature labels for user-friendly output
+        importance_df['Feature'] = importance_df['Feature'].map(FEATURE_LABELS)
+        
         # Save CSV
         csv_path = f"{OUTPUT_DIRS['feature_importance']}/{model_name.replace(' ', '_').lower()}_importance.csv"
         importance_df.sort_values('Importance', ascending=False).to_csv(csv_path, index=False)
@@ -475,11 +501,14 @@ def generate_shap_analysis(models, X_train, X_test, y_test):
         if isinstance(shap_values, list):
             shap_values = shap_values[1]  # Use second class (stable)
         
+        # SHAP DataFrame with descriptive labels
+        shap_input = X_test.rename(columns=FEATURE_LABELS)
+
         # SHAP Summary Plot
         print("  • Generating SHAP summary plot...")
         plt.figure(figsize=(10, 6))
-        shap.summary_plot(shap_values, X_test, show=False)
-        summary_path = f"{OUTPUT_DIRS['shap']}/shap_summary_plot.png"
+        shap.summary_plot(shap_values, shap_input, show=False)
+        summary_path = f"{OUTPUT_DIRS['shap']}/shap_summary.png"
         plt.savefig(summary_path, dpi=300, bbox_inches='tight')
         plt.close()
         print(f"  ✓ Summary plot saved: {summary_path}")
@@ -487,8 +516,8 @@ def generate_shap_analysis(models, X_train, X_test, y_test):
         # SHAP Bar Plot
         print("  • Generating SHAP bar plot...")
         plt.figure(figsize=(10, 6))
-        shap.summary_plot(shap_values, X_test, plot_type='bar', show=False)
-        bar_path = f"{OUTPUT_DIRS['shap']}/shap_bar_plot.png"
+        shap.summary_plot(shap_values, shap_input, plot_type='bar', show=False)
+        bar_path = f"{OUTPUT_DIRS['shap']}/shap_bar.png"
         plt.savefig(bar_path, dpi=300, bbox_inches='tight')
         plt.close()
         print(f"  ✓ Bar plot saved: {bar_path}")
@@ -588,8 +617,8 @@ Why Ensemble Methods Performed Well:
    • Averaging multiple predictions reduces variance
 
 3. HANDLING COMPLEX PATTERNS:
-   Grid stability depends on complex interactions between power flow (p1-p4),
-   response dynamics (tau1-tau4), and demand flexibility (g1-g4).
+   Grid stability depends on complex interactions between power balance (p1-p4),
+   response delay (tau1-tau4), and demand flexibility (g1-g4).
    Ensemble methods excel at capturing these non-linear relationships.
 
 4. ROBUSTNESS:
@@ -637,6 +666,11 @@ RECOMMENDATIONS
 3. FEATURE IMPORTANCE:
    Focus on top features for grid monitoring and parameter optimization.
    See feature_importance/ directory for detailed analysis.
+
+FEATURE GUIDE:
+• Response Delay: how quickly a node reacts to disturbances. Higher values indicate slower reactions.
+• Demand Flexibility: how adaptable a node's demand is. Higher values indicate a more flexible response.
+• Power Balance: net generation or consumption at a node. Positive values typically indicate generation dominance.
 
 4. EXPLAINABILITY:
    Use SHAP values (generated for XGBoost) to explain individual predictions

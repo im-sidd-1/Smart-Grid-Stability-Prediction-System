@@ -134,3 +134,17 @@ weighted avg     0.9799    0.9799    0.9799     12000
 Confusion Matrix:
 [[7557   99]
  [ 142 4202]]
+
+
+================================================================================
+FEATURE GUIDE
+================================================================================
+
+Response Delay: how quickly a node reacts to disturbances. Higher values mean slower reaction.
+
+Demand Flexibility: how adaptable a node's demand is. Higher values mean more flexibility.
+
+Power Balance: net generation or consumption at a node. Positive values typically mean generation dominance.
+
+
+This guide is included to help recruiters, reviewers, and non-technical readers understand the dashboard terms.

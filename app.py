@@ -57,20 +57,20 @@ feature_names = [
 ]
 
 feature_labels = {
-    "tau1": "⚡ Node 1 Response Speed",
-    "tau2": "⚡ Node 2 Response Speed",
-    "tau3": "⚡ Node 3 Response Speed",
-    "tau4": "⚡ Node 4 Response Speed",
+    "tau1": "Response Delay – Node 1",
+    "tau2": "Response Delay – Node 2",
+    "tau3": "Response Delay – Node 3",
+    "tau4": "Response Delay – Node 4",
 
-    "p1": "🔋 Node 1 Power Flow",
-    "p2": "🔋 Node 2 Power Flow",
-    "p3": "🔋 Node 3 Power Flow",
-    "p4": "🔋 Node 4 Power Flow",
+    "p1": "Power Balance – Node 1",
+    "p2": "Power Balance – Node 2",
+    "p3": "Power Balance – Node 3",
+    "p4": "Power Balance – Node 4",
 
-    "g1": "💰 Node 1 Demand Flexibility",
-    "g2": "💰 Node 2 Demand Flexibility",
-    "g3": "💰 Node 3 Demand Flexibility",
-    "g4": "💰 Node 4 Demand Flexibility"
+    "g1": "Demand Flexibility – Node 1",
+    "g2": "Demand Flexibility – Node 2",
+    "g3": "Demand Flexibility – Node 3",
+    "g4": "Demand Flexibility – Node 4"
 }
 
 # ==========================================
@@ -105,106 +105,106 @@ st.sidebar.caption("Configure the four smart grid participants.")
 
 with st.sidebar.expander("🔵 Node 1", expanded=True):
     tau1 = st.slider(
-        "⚡ Response Speed",
+        "Response Delay",
         0.0,
         10.0,
         5.0,
         key="tau1",
-        help="Lower values indicate faster reaction to disturbances."
+        help="Higher values indicate slower reactions to grid disturbances."
     )
     p1 = st.slider(
-        "🔋 Power Flow",
+        "Power Balance",
         -5.0,
         5.0,
         0.0,
         key="p1",
-        help="Positive values mean this node is supplying electricity. Negative values mean it is consuming electricity."
+        help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g1 = st.slider(
-        "💰 Demand Flexibility",
+        "Demand Flexibility",
         0.0,
         1.0,
         0.5,
         key="g1",
-        help="Higher values mean consumers at this node adjust their electricity usage more when prices change."
+        help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
 with st.sidebar.expander("🟢 Node 2", expanded=True):
     tau2 = st.slider(
-        "⚡ Response Speed",
+        "Response Delay",
         0.0,
         10.0,
         5.0,
         key="tau2",
-        help="Lower values indicate faster reaction to disturbances."
+        help="Higher values indicate slower reactions to grid disturbances."
     )
     p2 = st.slider(
-        "🔋 Power Flow",
+        "Power Balance",
         -5.0,
         5.0,
         0.0,
         key="p2",
-        help="Positive values mean this node is supplying electricity. Negative values mean it is consuming electricity."
+        help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g2 = st.slider(
-        "💰 Demand Flexibility",
+        "Demand Flexibility",
         0.0,
         1.0,
         0.5,
         key="g2",
-        help="Higher values mean consumers at this node adjust their electricity usage more when prices change."
+        help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
 with st.sidebar.expander("🟡 Node 3", expanded=True):
     tau3 = st.slider(
-        "⚡ Response Speed",
+        "Response Delay",
         0.0,
         10.0,
         5.0,
         key="tau3",
-        help="Lower values indicate faster reaction to disturbances."
+        help="Higher values indicate slower reactions to grid disturbances."
     )
     p3 = st.slider(
-        "🔋 Power Flow",
+        "Power Balance",
         -5.0,
         5.0,
         0.0,
         key="p3",
-        help="Positive values mean this node is supplying electricity. Negative values mean it is consuming electricity."
+        help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g3 = st.slider(
-        "💰 Demand Flexibility",
+        "Demand Flexibility",
         0.0,
         1.0,
         0.5,
         key="g3",
-        help="Higher values mean consumers at this node adjust their electricity usage more when prices change."
+        help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
 with st.sidebar.expander("🔴 Node 4", expanded=True):
     tau4 = st.slider(
-        "⚡ Response Speed",
+        "Response Delay",
         0.0,
         10.0,
         5.0,
         key="tau4",
-        help="Lower values indicate faster reaction to disturbances."
+        help="Higher values indicate slower reactions to grid disturbances."
     )
     p4 = st.slider(
-        "🔋 Power Flow",
+        "Power Balance",
         -5.0,
         5.0,
         0.0,
         key="p4",
-        help="Positive values mean this node is supplying electricity. Negative values mean it is consuming electricity."
+        help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g4 = st.slider(
-        "💰 Demand Flexibility",
+        "Demand Flexibility",
         0.0,
         1.0,
         0.5,
         key="g4",
-        help="Higher values mean consumers at this node adjust their electricity usage more when prices change."
+        help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
 st.sidebar.info(
@@ -215,9 +215,9 @@ st.sidebar.markdown("---")
 st.sidebar.markdown(
     """
 ### Quick Tips
-- Keep Response Speed values moderate for responsive control.
-- Balance Power Flow values to avoid overload.
-- Use Demand Flexibility values that reflect realistic customer behavior.
+- Keep Response Delay values moderate for balanced responsiveness.
+- Balance Power Balance values to avoid overload.
+- Use Demand Flexibility values that reflect realistic customer behaviour.
 
 Explore multiple scenarios to see how the predicted status changes.
 """
@@ -383,30 +383,30 @@ st.divider()
 
 st.header("📖 Parameter Guide")
 
-with st.expander("⚡ Response Speed"):
+with st.expander("Response Delay"):
     st.markdown(
         """
-- Indicates how quickly a node reacts to sudden changes in the grid.
-- Lower values mean faster response.
-- Higher values mean slower response.
+- Indicates how quickly a node reacts to disturbances.
+- Higher values indicate slower reactions.
+- Lower values indicate faster responses.
 """
     )
 
-with st.expander("🔋 Power Flow"):
+with st.expander("Power Balance"):
     st.markdown(
         """
-- Positive values indicate electricity generation.
-- Negative values indicate electricity consumption.
-- Values close to zero indicate balanced operation.
+- Positive values generally indicate generation dominance.
+- Negative values generally indicate consumption dominance.
+- Values near zero indicate balanced operation.
 """
     )
 
-with st.expander("💰 Demand Flexibility"):
+with st.expander("Demand Flexibility"):
     st.markdown(
         """
-- Indicates how willing consumers are to adjust electricity usage when prices change.
-- Higher values mean greater responsiveness.
-- Lower values mean little change in behavior.
+- Describes how adaptable a node's demand is.
+- Higher values indicate a more flexible response.
+- Lower values indicate less adaptive behaviour.
 """
     )
 
