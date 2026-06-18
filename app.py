@@ -105,7 +105,7 @@ st.sidebar.caption("Configure the four smart grid participants.")
 
 with st.sidebar.expander("🔵 Node 1", expanded=True):
     tau1 = st.slider(
-        "Response Delay",
+        "Response Delay(T1)",
         0.0,
         10.0,
         5.0,
@@ -113,7 +113,7 @@ with st.sidebar.expander("🔵 Node 1", expanded=True):
         help="Higher values indicate slower reactions to grid disturbances."
     )
     p1 = st.slider(
-        "Power Balance",
+        "Power Balance(P1)",
         -5.0,
         5.0,
         0.0,
@@ -121,7 +121,7 @@ with st.sidebar.expander("🔵 Node 1", expanded=True):
         help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g1 = st.slider(
-        "Demand Flexibility",
+        "Demand Flexibility(G1)",
         0.0,
         1.0,
         0.5,
@@ -131,7 +131,7 @@ with st.sidebar.expander("🔵 Node 1", expanded=True):
 
 with st.sidebar.expander("🟢 Node 2", expanded=True):
     tau2 = st.slider(
-        "Response Delay",
+        "Response Delay(T2)",
         0.0,
         10.0,
         5.0,
@@ -139,7 +139,7 @@ with st.sidebar.expander("🟢 Node 2", expanded=True):
         help="Higher values indicate slower reactions to grid disturbances."
     )
     p2 = st.slider(
-        "Power Balance",
+        "Power Balance(P2)",
         -5.0,
         5.0,
         0.0,
@@ -147,7 +147,7 @@ with st.sidebar.expander("🟢 Node 2", expanded=True):
         help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g2 = st.slider(
-        "Demand Flexibility",
+        "Demand Flexibility(G2)",
         0.0,
         1.0,
         0.5,
@@ -157,7 +157,7 @@ with st.sidebar.expander("🟢 Node 2", expanded=True):
 
 with st.sidebar.expander("🟡 Node 3", expanded=True):
     tau3 = st.slider(
-        "Response Delay",
+        "Response Delay(T3)",
         0.0,
         10.0,
         5.0,
@@ -165,7 +165,7 @@ with st.sidebar.expander("🟡 Node 3", expanded=True):
         help="Higher values indicate slower reactions to grid disturbances."
     )
     p3 = st.slider(
-        "Power Balance",
+        "Power Balance(P3)",
         -5.0,
         5.0,
         0.0,
@@ -173,7 +173,7 @@ with st.sidebar.expander("🟡 Node 3", expanded=True):
         help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g3 = st.slider(
-        "Demand Flexibility",
+        "Demand Flexibility(G3)",
         0.0,
         1.0,
         0.5,
@@ -183,7 +183,7 @@ with st.sidebar.expander("🟡 Node 3", expanded=True):
 
 with st.sidebar.expander("🔴 Node 4", expanded=True):
     tau4 = st.slider(
-        "Response Delay",
+        "Response Delay(T4)",
         0.0,
         10.0,
         5.0,
@@ -191,7 +191,7 @@ with st.sidebar.expander("🔴 Node 4", expanded=True):
         help="Higher values indicate slower reactions to grid disturbances."
     )
     p4 = st.slider(
-        "Power Balance",
+        "Power Balance(P4)",
         -5.0,
         5.0,
         0.0,
@@ -199,7 +199,7 @@ with st.sidebar.expander("🔴 Node 4", expanded=True):
         help="Positive values generally indicate generation dominance and negative values indicate consumption dominance."
     )
     g4 = st.slider(
-        "Demand Flexibility",
+        "Demand Flexibility(G4)",
         0.0,
         1.0,
         0.5,
@@ -287,10 +287,10 @@ if st.sidebar.button("Predict Stability"):
 **Confidence:** {confidence:.2f}%
 
 #### Operational Guidance
-• No immediate corrective action required.
-• Grid operating within acceptable limits.
-• Continue routine monitoring.
-• Maintain standard operating procedures.
+• No immediate corrective action required.\n
+• Grid operating within acceptable limits.\n
+• Continue routine monitoring.\n
+• Maintain standard operating procedures.\n
 """
             )
         else:
