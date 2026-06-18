@@ -301,10 +301,10 @@ if st.sidebar.button("Predict Stability"):
 **Risk Probability:** {confidence:.2f}%
 
 #### Recommended Actions
-• Reduce sudden load fluctuations.
-• Monitor generator response times.
-• Investigate delayed reaction nodes.
-• Verify power balancing mechanisms.
+• Reduce sudden load fluctuations.\n
+• Monitor generator response times.\n
+• Investigate delayed reaction nodes.\n
+• Verify power balancing mechanisms.\n
 • Increase operational surveillance.
 """
             )
