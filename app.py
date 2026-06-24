@@ -103,7 +103,7 @@ st.divider()
 st.sidebar.title("🎛 Control Panel")
 st.sidebar.caption("Configure the four smart grid participants.")
 
-with st.sidebar.expander("🔵 Node 1", expanded=True):
+with st.sidebar.expander("🔵 Node 1 - Power Generation Station", expanded=True):
     tau1 = st.slider(
         "Response Delay(T1)",
         0.0,
@@ -129,7 +129,7 @@ with st.sidebar.expander("🔵 Node 1", expanded=True):
         help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
-with st.sidebar.expander("🟢 Node 2", expanded=True):
+with st.sidebar.expander("🟢 Node 2 - Residential Area", expanded=True):
     tau2 = st.slider(
         "Response Delay(T2)",
         0.0,
@@ -155,7 +155,7 @@ with st.sidebar.expander("🟢 Node 2", expanded=True):
         help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
-with st.sidebar.expander("🟡 Node 3", expanded=True):
+with st.sidebar.expander("🟡 Node 3 - Industrial Zone", expanded=True):
     tau3 = st.slider(
         "Response Delay(T3)",
         0.0,
@@ -181,7 +181,7 @@ with st.sidebar.expander("🟡 Node 3", expanded=True):
         help="Higher values mean the node's demand is more adaptable to changing grid conditions."
     )
 
-with st.sidebar.expander("🔴 Node 4", expanded=True):
+with st.sidebar.expander("🔴 Node 4 - Hospital / Critical Infrastructure", expanded=True):
     tau4 = st.slider(
         "Response Delay(T4)",
         0.0,
