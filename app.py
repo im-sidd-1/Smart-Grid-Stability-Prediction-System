@@ -99,8 +99,8 @@ st.divider()
 
 # ==========================================
 # SIDEBAR INPUTS
-# ==========================================
-st.sidebar.title("🎛 Control Panel")
+# ==========================================🎛
+st.sidebar.title(" Control Panel")
 st.sidebar.caption("Configure the four smart grid participants.")
 
 with st.sidebar.expander("🔵 Node 1 - Power Generation Station", expanded=True):
