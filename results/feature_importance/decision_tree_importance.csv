@@ -1,0 +1,13 @@
+Feature,Importance
+Response Delay – Node 3,0.137488438905962
+Response Delay – Node 4,0.12746901949173545
+Response Delay – Node 1,0.12719676987011783
+Response Delay – Node 2,0.12424165915074348
+Demand Flexibility – Node 1,0.11657450951187087
+Demand Flexibility – Node 3,0.10837561527212221
+Demand Flexibility – Node 2,0.10528006364247461
+Demand Flexibility – Node 4,0.1025221800627497
+Power Balance – Node 1,0.014679925947332393
+Power Balance – Node 4,0.01390256728330465
+Power Balance – Node 2,0.012136484728138795
+Power Balance – Node 3,0.010132766133448138
